@@ -4,6 +4,8 @@ package com.Projects.Blog.Project.Domain.Entites;
 import jakarta.persistence.*;
 import lombok.*;
 
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Objects;
 import java.util.UUID;
 
@@ -20,6 +22,9 @@ public class Category {
     @Id
     @GeneratedValue(strategy = GenerationType.UUID)
     private UUID id ;
+
+    @OneToMany(mappedBy = "category" )
+    private List<Post> posts = new ArrayList<>();
 
 
     @Column(nullable = false,unique = true)
